@@ -59,7 +59,7 @@ PACKAGES ?= $(NMPC_PACKAGES) $(ROBOT_MODEL_PACKAGES) $(RUNTIME_PACKAGES)
 BUILD_TYPE ?= Release
 BUILD_TESTING ?= ON
 BUILD_WITH_NINJA ?= ON
-PARALLEL_JOBS ?= 6
+PARALLEL_JOBS ?= 1
 CPP_VERSION ?= -std=c++20
 
 ############################################################

@@ -33,6 +33,7 @@ message(STATUS "BLASFEO_PATH: " ${BLASFEO_PATH})
 # HPIPM Settings
 set(BLASFEO_PATH ${BLASFEO_PATH} CACHE STRING "BLASFEO installation path" FORCE)
 set(BLASFEO_INCLUDE_DIR ${BLASFEO_PATH}/include CACHE STRING "Path to BLASFEO header files." FORCE)
+set(TARGET GENERIC CACHE STRING "Target architecture" FORCE)
 set(BUILD_SHARED_LIBS ON CACHE STRING "Build shared libraries" FORCE)
 set(HPIPM_TESTING OFF CACHE BOOL "Examples enabled")
 
