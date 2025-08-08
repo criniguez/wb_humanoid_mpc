@@ -1,3 +1,10 @@
+# Fork
+## Fork Modifications
+This fork introduces the following modifications to the original Whole-Body Humanoid MPC repository:
+
+- **ARM Compatibility**: Adapted build system to support compilation on ARM-based architectures.
+- **Profiling Support**: Integrated optional profiling mechanisms using `perf` and `valgrind` to analyze performance of the MPC pipeline.
+
 # Whole-Body Humanoid MPC
 
 This repository contains a Whole-Body Nonlinear Model Predictive Controller (NMPC) for humanoid loco-manipulation control. This approach enables to directly optimize through the **full-order torque-level dynamics in realtime** to generate a wide range of humanoid behaviors building up on an [extended & updated version of ocs2](https://github.com/manumerous/ocs2_ros2)
@@ -31,7 +38,7 @@ Create a colcon workspace and clone the repository into the src folder:
 
 ```bash
 mkdir -p humanoid_mpc_ws/src && cd humanoid_mpc_ws/src
-git clone https://github.com/1x-technologies/wb-humanoid-mpc.git
+git clone https://github.com/criniguez/wb_humanoid_mpc.git
 ```
 
 Then initialize all submodules using:
