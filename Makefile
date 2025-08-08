@@ -187,7 +187,6 @@ launch-g1-sim:
 	source install/setup.bash && \
 	ros2 launch g1_centroidal_mpc mujoco_sim.launch.py 
 
-
 launch-wb-g1-dummy-sim:
 	cd ${build_dir} && \
 	source ${ros_source_file} && \
@@ -199,6 +198,32 @@ launch-wb-g1-sim:
 	source ${ros_source_file} && \
 	source install/setup.bash && \
 	ros2 launch g1_wb_mpc mujoco_sim.launch.py 
+
+#centroidal perfilation
+launch-g1-dummy-sim-perf:
+	cd ${build_dir} && \
+	source ${ros_source_file} && \
+	source install/setup.bash && \
+	ros2 launch g1_centroidal_mpc dummy_sim_perf.launch.py 
+
+launch-g1-dummy-sim-valgrind:
+	cd ${build_dir} && \
+	source ${ros_source_file} && \
+	source install/setup.bash && \
+	ros2 launch g1_centroidal_mpc dummy_sim_valgrind.launch.py 
+	
+#wb perfilation
+launch-wb-g1-dummy-sim-perf:
+	cd ${build_dir} && \
+	source ${ros_source_file} && \
+	source install/setup.bash && \
+	ros2 launch g1_wb_mpc dummy_sim_perf.launch.py 
+
+launch-wb-g1-dummy-sim-valgrind:
+	cd ${build_dir} && \
+	source ${ros_source_file} && \
+	source install/setup.bash && \
+	ros2 launch g1_wb_mpc dummy_sim_valgrind.launch.py 
 
 run-ocs2-tests:
 	echo "make sure you call 'make build-relwithdebinfo' to build the tests before running them." && \

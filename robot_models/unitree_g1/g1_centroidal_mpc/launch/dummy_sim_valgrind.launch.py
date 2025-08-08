@@ -14,7 +14,7 @@ def generate_launch_description():
         xml_rel_path="/urdf/g1_29dof.xml",
         robot_name="g1",
         solver="sqp",
-        enable_debug="no_debug",
+        enable_debug="valgrind",
     )
 
     # Add parameters

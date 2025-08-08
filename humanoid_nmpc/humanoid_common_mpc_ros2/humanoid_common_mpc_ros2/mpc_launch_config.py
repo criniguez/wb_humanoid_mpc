@@ -32,7 +32,7 @@ class MPCLaunchConfig:
         urdf_rel_path: str,
         xml_rel_path: str,
         robot_name: str,
-        enable_debug: bool = False,
+        enable_debug: str = "no_debug",
         solver: str = "sqp",
     ):
 
@@ -68,12 +68,20 @@ class MPCLaunchConfig:
         )
 
         ### Termianl Prefix ###
-        if enable_debug:
+        self.mpc_terminal_prefix = []
+        self.terminal_prefix = []
+        if enable_debug == "debug":
             self.always_terminal_prefix = ["x-terminal-emulator -e gdb -ex run --args"]
             self.terminal_prefix = ["x-terminal-emulator -e gdb -ex run --args"]
+        elif enable_debug == "perf": 
+            self.always_terminal_prefix = ["x-terminal-emulator -e"]
+            self.mpc_terminal_prefix = ["x-terminal-emulator -e perf record -e cpu-clock -F 99 -g --"]
+        elif enable_debug == "valgrind":
+            self.always_terminal_prefix = ["x-terminal-emulator -e"]
+            self.mpc_terminal_prefix = ["x-terminal-emulator -e valgrind --tool=callgrind --dump-instr=yes --"]
         else:
             self.always_terminal_prefix = ["x-terminal-emulator -e"]
-            self.terminal_prefix = []
+
 
         #############
         ### Nodes ###
@@ -101,7 +109,7 @@ class MPCLaunchConfig:
         self.mpc_node = launch_ros.actions.Node(
             package=self.mpc_lib_pkg_ros2,
             executable=mpc_node_exec,
-            prefix=self.terminal_prefix,
+            prefix=self.mpc_terminal_prefix,
             name=mpc_node_exec,
             arguments=[
                 LaunchConfiguration("robot_name"),

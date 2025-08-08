@@ -15,7 +15,7 @@ def generate_launch_description():
         xml_rel_path="",
         robot_name="g1",
         solver="sqp",
-        enable_debug=False,
+        enable_debug="no_debug",
     )
 
     # Add parameters

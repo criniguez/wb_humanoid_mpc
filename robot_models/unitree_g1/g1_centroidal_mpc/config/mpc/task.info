@@ -79,7 +79,7 @@ swing_trajectory_config
 ; multiple_shooting settings
 multiple_shooting
 {
-  nThreads                              4
+  nThreads                              1
   dt                                    0.02
   sqpIteration                          1
   deltaTol                              1e-4
