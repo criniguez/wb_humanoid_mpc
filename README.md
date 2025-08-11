@@ -65,19 +65,16 @@ envsubst < dependencies.txt | xargs sudo apt install -y
 ```
 </details>
 
-## Build RAM Usage by PARALLEL_JOBS
-
-| PARALLEL_JOBS | Peak RAM Used | System Response                                    |
-|--------------:|--------------:|----------------------------------------------------|
-| 1             | 11 GiB        | Completed cleanly                                  |
-| 2             | 14 GiB        | Hung for ~5–7 min, then resumed                    |
-| 4             | 14 GiB        | Froze completely → needed forced power‑off         |
-| 6             | 14 GiB        | Froze completely → needed forced power‑off         |
-
-> **Note:** All of these builds were attempted inside a VS Code Dev Container but kept crashing. The image was therefore built and run **from a terminal** Docker session, and all RAM measurements come from terminal‑based setup.
-> Tested on: HP Victus (i5‑11400H, RTX 3050, Ubuntu 22.04, 16 GB RAM)
-
 ### Building the MPC 
+
+Building the WB MPC consumes a significant amount of RAM. We recommend saving all open work before starting the first build. The RAM usage can be adjusted by setting the PARALLEL_JOBS environment variable. Our recommendation is:
+
+| PARALLEL_JOBS | Required System RAM |
+|--------------:|--------------------:|
+| 2 (default)   |  16 GiB             | 
+| 4             |  32 GiB              |
+| 6             |  64 GiB              | 
+
 
 ```bash
 make build-all
